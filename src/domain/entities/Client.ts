@@ -22,8 +22,4 @@ export class Client {
   public getEmail(): string {
     return this.email;
   }
-
-  public getDocumentNumber(): string {
-    return this.documentNumber;
-  }
 }
