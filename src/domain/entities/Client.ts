@@ -1,3 +1,4 @@
+import { Cpf } from "src/shared/domain/value-objects/cpf.value-object";
 import { Entity } from "../../shared/domain/Entity";
 import { Uuid } from "../../shared/domain/value-objects/uuid.value-object";
 import { ValueObject } from "../../shared/domain/ValueObject";
@@ -6,7 +7,7 @@ export type ClientProps = {
   clientId?: Uuid;
   name: string;
   email: string;
-  documentNumber?: string;
+  cpf?: Cpf;
   createdAt?: Date;
 };
 
@@ -14,7 +15,7 @@ export class Client extends Entity{
   public clientId: Uuid;
   public name: string;
   public email: string;
-  public documentNumber: string | null;
+  public cpf: Cpf | null;
   public createdAt: Date;
 
   constructor(props: ClientProps) {
@@ -22,7 +23,7 @@ export class Client extends Entity{
     this.clientId = props.clientId ?? new Uuid();
     this.name = props.name;
     this.email = props.email;
-    this.documentNumber = props.documentNumber || null;
+    this.cpf = props.cpf || null;
     this.createdAt = props.createdAt || new Date();
   }
 
@@ -35,7 +36,7 @@ export class Client extends Entity{
       id: this.clientId.id,
       name: this.name,
       email: this.email,
-      documentNumber: this.documentNumber,
+      cpf: this.cpf?.getValue(),
       createdAt: this.createdAt,
     }
   }

@@ -1,5 +1,6 @@
 import { Uuid } from 'src/shared/domain/value-objects/uuid.value-object';
 import { Client } from '../Client';
+import { Cpf } from 'src/shared/domain/value-objects/cpf.value-object';
 
 describe('Client', () => {
   test('should be defined', () => {
@@ -21,19 +22,21 @@ describe('Client', () => {
       expect(client.clientId).toBeInstanceOf(Uuid);
       expect(client.name).toBe('Jhon Doe');
       expect(client.email).toBe('jhon@doe.com');
-      expect(client.documentNumber).toBe(null);
+      expect(client.cpf).toBe(null);
       expect(client.createdAt).toBeInstanceOf(Date);
+
+      let cpf = new Cpf('48934098830');
 
       client = new Client({
         name: 'Jhon Doe',
         email: 'jhon@doe.com',
-        documentNumber: '12345678900',
+        cpf,
       })
 
       expect(client.clientId).toBeInstanceOf(Uuid);
       expect(client.name).toBe('Jhon Doe');
       expect(client.email).toBe('jhon@doe.com');
-      expect(client.documentNumber).toBe('12345678900');
+      expect(client.cpf.getValue()).toBe('48934098830');
       expect(client.createdAt).toBeInstanceOf(Date);
     })
 
