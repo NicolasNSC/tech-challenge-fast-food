@@ -1,7 +1,7 @@
-import { Cpf } from "src/shared/domain/value-objects/cpf.value-object";
-import { Entity } from "../../shared/domain/Entity";
-import { Uuid } from "../../shared/domain/value-objects/uuid.value-object";
-import { ValueObject } from "../../shared/domain/ValueObject";
+import {Cpf} from 'src/shared/domain/value-objects/cpf.value-object';
+import {Entity} from '../../shared/domain/Entity';
+import {Uuid} from '../../shared/domain/value-objects/uuid.value-object';
+import {ValueObject} from '../../shared/domain/ValueObject';
 
 export type ClientProps = {
   clientId?: Uuid;
@@ -11,7 +11,7 @@ export type ClientProps = {
   createdAt?: Date;
 };
 
-export class Client extends Entity{
+export class Client extends Entity {
   public clientId: Uuid;
   public name: string;
   public email: string;
@@ -38,6 +38,6 @@ export class Client extends Entity{
       email: this.email,
       cpf: this.cpf?.getValue(),
       createdAt: this.createdAt,
-    }
+    };
   }
 }
