@@ -5,7 +5,7 @@ import { Uuid } from 'src/shared/domain/value-objects/uuid.value-object';
 import { Cpf } from 'src/shared/domain/value-objects/cpf.value-object';
 
 describe('Customer Adapter Unit Tests', () => {
-  it('should return a domain entity without cpf', () => {
+  it('should return a domain entity', () => {
     const dto: CustomerProps = {
       email: 'jhon doe',
       name: 'jhon@doe.com',
