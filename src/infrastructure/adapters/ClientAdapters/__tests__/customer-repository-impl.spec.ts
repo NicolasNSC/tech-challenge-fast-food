@@ -1,6 +1,7 @@
 import { CustomerAdapter } from "../CustomerAdapter";
 import { Uuid } from "src/shared/domain/value-objects/uuid.value-object";
 import { CustomerRepositoryImpl } from "../CustomerRepositoryImpl";
+import { Cpf } from "src/shared/domain/value-objects/cpf.value-object";
 
 describe('CustomerRepositoryImpl Unit Test', () => {
   it('should save a new customer', async () => {
@@ -8,6 +9,7 @@ describe('CustomerRepositoryImpl Unit Test', () => {
       customerId: new Uuid(),
       name: 'John Doe',
       email: 'jhon@doe.com',
+      cpf: new Cpf('48934098830'),
     })
 
     const customerRepository = new CustomerRepositoryImpl();
@@ -23,6 +25,7 @@ describe('CustomerRepositoryImpl Unit Test', () => {
       customerId: new Uuid(),
       name: 'John Doe',
       email: 'jhon@doe.com',
+      cpf: new Cpf('48934098830'),
     })
 
     const customerRepository = new CustomerRepositoryImpl();
@@ -35,7 +38,7 @@ describe('CustomerRepositoryImpl Unit Test', () => {
     expect(customerFound?.customerId.id).toBe(customerAdapter.customerId.id);
     expect(customerFound?.name).toBe(customerAdapter.name);
     expect(customerFound?.email).toBe(customerAdapter.email);
-    expect(customerFound?.cpf).toBeNull();
+    expect(customerFound?.cpf).toBe(customerAdapter.cpf);
     expect(customerFound?.customerId).toBeInstanceOf(Uuid);
   });
 });

@@ -9,27 +9,6 @@ describe('Customer Adapter Unit Tests', () => {
     const dto: CustomerProps = {
       email: 'jhon doe',
       name: 'jhon@doe.com',
-    }
-
-    const customer = CustomerAdapter.toDomain(dto);
-
-    expect(customer).toBeDefined();
-    expect(customer).toBeInstanceOf(Customer);
-    expect(customer).toHaveProperty('customerId');
-    expect(customer).toHaveProperty('name');
-    expect(customer).toHaveProperty('email');
-    expect(customer).toHaveProperty('cpf');
-    expect(customer).toHaveProperty('createdAt');
-    expect(customer.customerId).toBeInstanceOf(Uuid);
-    expect(customer.cpf).toBeNull();
-    expect(customer.email).toBe(dto.email);
-    expect(customer.name).toBe(dto.name);
-  })
-
-  it('should return a domain entity with cpf', () => {
-    const dto: CustomerProps = {
-      email: 'jhon doe',
-      name: 'jhon@doe.com',
       cpf: new Cpf('489.340.988-30'),
     }
 
@@ -43,8 +22,7 @@ describe('Customer Adapter Unit Tests', () => {
     expect(customer).toHaveProperty('cpf');
     expect(customer).toHaveProperty('createdAt');
     expect(customer.customerId).toBeInstanceOf(Uuid);
-    expect(customer.cpf).toBeInstanceOf(Cpf);
-    expect(customer.cpf.getValue()).toBe(dto.cpf.getValue());
+    expect(customer.cpf).toBe(dto.cpf);
     expect(customer.email).toBe(dto.email);
     expect(customer.name).toBe(dto.name);
   })
@@ -54,6 +32,8 @@ describe('Customer Adapter Unit Tests', () => {
       customerId: new Uuid(),
       email: 'jhon doe',
       name: 'jhon doe name',
+      cpf: new Cpf('489.340.988-30'),
+      createdAt: new Date(),
     });
 
     const dto = CustomerAdapter.toDTO(customer);
@@ -68,6 +48,7 @@ describe('Customer Adapter Unit Tests', () => {
     expect(dto.customerId).toBeInstanceOf(Uuid);
     expect(dto.email).toBe(customer.email);
     expect(dto.name).toBe(customer.name);
-    expect(dto.cpf).toBeUndefined();
+    expect(dto.cpf).toBe(customer.cpf);
+    expect(dto.createdAt).toBe(customer.createdAt);
   })
 });

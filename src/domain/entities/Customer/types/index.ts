@@ -5,6 +5,6 @@ export type CustomerProps = {
   customerId?: Uuid;
   name: string;
   email: string;
-  cpf?: Cpf;
+  cpf: Cpf;
   createdAt?: Date;
 };

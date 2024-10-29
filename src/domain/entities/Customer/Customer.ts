@@ -39,7 +39,7 @@ export class Customer extends Entity {
       id: this.customerId.id,
       name: this.name,
       email: this.email,
-      cpf: this.cpf?.getValue(),
+      cpf: this.cpf.getValue(),
       createdAt: this.createdAt,
     };
   }

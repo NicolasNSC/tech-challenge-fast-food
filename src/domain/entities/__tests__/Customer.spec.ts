@@ -7,6 +7,7 @@ describe('Customer', () => {
     const customer = Customer.create({
       name: 'Jhon Doe',
       email: 'jhon@doe.com',
+      cpf: new Cpf('48934098830'),
     });
 
     expect(customer).toBeDefined();
@@ -16,31 +17,32 @@ describe('Customer', () => {
     test('constructor', () => {
       const id = new Uuid();
 
+      const cpf1 = new Cpf('731.956.230-80');
       let customer = Customer.create({
         customerId: id,
         name: 'Jhon Doe',
         email: 'jhon@doe.com',
+        cpf: cpf1
       });
 
       expect(customer.customerId).toBeInstanceOf(Uuid);
       expect(customer.name).toBe('Jhon Doe');
       expect(customer.email).toBe('jhon@doe.com');
-      expect(customer.cpf).toBe(undefined);
+      expect(customer.cpf).toBe(cpf1);
       expect(customer.createdAt).toBeInstanceOf(Date);
 
-      const cpf = new Cpf('48934098830');
-
+      const cpf2 = new Cpf('812.685.960-19');
       customer = Customer.create({
         customerId: id,
         name: 'Jhon Doe',
         email: 'jhon@doe.com',
-        cpf,
+        cpf: cpf2,
       });
 
       expect(customer.customerId).toBeInstanceOf(Uuid);
       expect(customer.name).toBe('Jhon Doe');
       expect(customer.email).toBe('jhon@doe.com');
-      expect(customer.cpf.getValue()).toBe('48934098830');
+      expect(customer.cpf).toBe(cpf2);
       expect(customer.createdAt).toBeInstanceOf(Date);
     });
 

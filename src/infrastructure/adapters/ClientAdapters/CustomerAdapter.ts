@@ -9,7 +9,7 @@ export class CustomerAdapter {
       customerId: new Uuid(),
       email: dto.email,
       name: dto.name,
-      cpf: dto.cpf ? new Cpf(dto.cpf.getValue()) : null,
+      cpf: dto.cpf,
       createdAt: new Date(),
     })
   }
