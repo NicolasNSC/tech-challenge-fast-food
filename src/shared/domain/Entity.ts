@@ -1,4 +1,4 @@
-import { ValueObject } from "./ValueObject";
+import {ValueObject} from './ValueObject';
 
 export abstract class Entity {
   abstract get entityId(): ValueObject;

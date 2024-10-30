@@ -1,4 +1,4 @@
-import { Cpf } from '../cpf.value-object';
+import {Cpf} from '../cpf.value-object';
 
 describe('CPF ValueObject Unit Tests', () => {
   test('should throw error when cpf is invalid', () => {
